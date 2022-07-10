@@ -1,9 +1,15 @@
 <script setup lang="ts">
-const todos = []
+import { inject } from 'vue';
+import { todoKey } from '../useTodo';
 
-const addTodo = (title: string) => {
-  console.log(title)
+const state = inject(todoKey);
+if (!state) {
+  throw new Error ('state is undfined');
 }
+
+const { todos, addTodo } = state;
+// const todos = inject('todos');
+// const _addTodo = inject('addTodo');
 
 </script>
 
